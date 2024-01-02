@@ -29,7 +29,11 @@ public class SecurityConfiguration {
                         authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                                 .requestMatchers(
                                         new AntPathRequestMatcher("/AllUser",
-                                                HttpMethod.GET.toString()))
+                                                HttpMethod.GET.toString()),
+                                        new AntPathRequestMatcher("/register",
+                                                HttpMethod.POST.toString()),
+                                        new AntPathRequestMatcher("/login",
+                                                HttpMethod.POST.toString()))
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated())

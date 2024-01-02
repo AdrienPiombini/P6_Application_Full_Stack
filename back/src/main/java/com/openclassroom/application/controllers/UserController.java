@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.openclassroom.application.Dtos.UserDto;
-import com.openclassroom.application.entities.User;
-import com.openclassroom.application.repositories.UserRepository;
 import com.openclassroom.application.services.UserService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    UserRepository userRepository;
+    private final UserService userService;
 
-    @Autowired
-    UserService UserService;
-
-    @GetMapping("AllUser")
-    public List<User> findAll() {
-        return userRepository.findAll();
+    @PostMapping("register")
+    public ResponseEntity<?> register(@RequestBody UserDto userDto) {
+        return userService.register(userDto);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<RegistrationResponse> register(@RequestBody UserDto userDto ) {
-        RegistrationResponse response = new RegistrationResponse();
-        userRepository.save(null)
-        return ResponseEntity.ok().body(response);
+    @PostMapping("login")
+    public ResponseEntity<?> login(@RequestBody UserDto userDto) {
+        return userService.login(userDto);
+    }
+
+    @GetMapping("test")
+    public String test() {
+        return "ok";
     }
 
 }
