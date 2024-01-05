@@ -18,29 +18,29 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
-    private final JwtAuthenticationFilter jwtAuthFilter;
-    private final AuthenticationProvider authenticationProvider;
+  private final JwtAuthenticationFilter jwtAuthFilter;
+  private final AuthenticationProvider authenticationProvider;
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(
-                        authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                                .requestMatchers(
-                                        new AntPathRequestMatcher("/AllUser",
-                                                HttpMethod.GET.toString()),
-                                        new AntPathRequestMatcher("/register",
-                                                HttpMethod.POST.toString()),
-                                        new AntPathRequestMatcher("/login",
-                                                HttpMethod.POST.toString()))
-                                .permitAll()
-                                .anyRequest()
-                                .authenticated())
-                .sessionManagement(
-                        sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class).build();
-    }
+  @Bean
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(
+            authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+                .requestMatchers(
+                    new AntPathRequestMatcher("/AllUser",
+                        HttpMethod.GET.toString()),
+                    new AntPathRequestMatcher("/register",
+                        HttpMethod.POST.toString()),
+                    new AntPathRequestMatcher("/login",
+                        HttpMethod.POST.toString()))
+                .permitAll()
+                .anyRequest()
+                .authenticated())
+        .sessionManagement(
+            sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authenticationProvider(authenticationProvider)
+        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class).build();
+  }
 
 }
