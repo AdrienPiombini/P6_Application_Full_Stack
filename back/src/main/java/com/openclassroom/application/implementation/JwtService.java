@@ -1,4 +1,4 @@
-package com.openclassroom.application.services;
+package com.openclassroom.application.implementation;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
