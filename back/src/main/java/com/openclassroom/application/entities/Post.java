@@ -35,7 +35,7 @@ public class Post {
 
   Date created_at;
 
-  Date updapted_at;
+  Date updated_at;
 
   @OneToMany(mappedBy = "post")
   List<Commentary> commentaries;

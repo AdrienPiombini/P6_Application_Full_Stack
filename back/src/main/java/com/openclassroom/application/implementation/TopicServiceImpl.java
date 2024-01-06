@@ -28,11 +28,11 @@ public class TopicServiceImpl implements TopicService {
   private final UserRepository userRepository;
 
   @Override
-  public List<TopicDto> getAllTopics() {
+  public ResponseEntity<?> getAllTopics() {
     List<Topic> topics = topicRepository.findAll();
     List<TopicDto> topicDtosList = topics.stream().map(topic -> topicMapper.fromTopic(topic))
         .collect(Collectors.toList());
-    return topicDtosList;
+    return ResponseEntity.ok().body(topicDtosList);
   }
 
   @Override
@@ -42,7 +42,8 @@ public class TopicServiceImpl implements TopicService {
     List<Topic> userTopics = user.getTopics();
 
     if (userTopics.contains(topic)) {
-      throw new SubscriptionException("You can't subscribe this topic");
+      return ResponseEntity.badRequest().body("You can't subscribe this topic");
+      // throw new SubscriptionException("You can't subscribe this topic");
     }
 
     userTopics.add(topic);
@@ -57,7 +58,8 @@ public class TopicServiceImpl implements TopicService {
     List<Topic> userTopics = user.getTopics();
 
     if (!userTopics.contains(topic)) {
-      throw new SubscriptionException("You can't unsubscribe this topic");
+      return ResponseEntity.badRequest().body("You can't unsubscribe this topic");
+      // throw new SubscriptionException("You can't unsubscribe this topic");
     }
     userTopics.remove(topic);
     userRepository.save(user);

@@ -1,12 +1,12 @@
 package com.openclassroom.application.controllers;
 
 import java.util.List;
-import java.util.concurrent.Flow.Subscription;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +25,7 @@ public class TopicController {
   private final TopicServiceImpl topicService;
 
   @GetMapping
-  public List<TopicDto> getAllTopics() {
+  public ResponseEntity<?> getAllTopics() {
     return topicService.getAllTopics();
   }
 
@@ -34,10 +34,9 @@ public class TopicController {
     return topicService.subscribe(topicDto);
   }
 
-  @PutMapping
+  @DeleteMapping
   public ResponseEntity<?> unsubscribe(@RequestBody TopicDto topicDto) throws SubscriptionException {
     return topicService.unsubscribe(topicDto);
-
   }
 
 }
