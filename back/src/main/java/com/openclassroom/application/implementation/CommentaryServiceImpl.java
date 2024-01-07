@@ -17,10 +17,12 @@ import com.openclassroom.application.mappers.PostMapper;
 import com.openclassroom.application.repositories.CommentaryRepository;
 import com.openclassroom.application.services.CommentaryService;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class CommentaryServiceImpl implements CommentaryService {
 
   private final CommentaryRepository commentaryRepository;
@@ -33,7 +35,11 @@ public class CommentaryServiceImpl implements CommentaryService {
   public Commentary createCommentary(CommentaryDto commentaryDto, Long postId) {
     User user = userServiceImpl.retrieveUserByContext();
     PostDto postDto = postServiceImpl.findOnePost(postId);
+    if (postDto == null) {
+      return null;
+    }
     Post post = postMapper.fromPostDto(postDto);
+    post.setUser(user);
 
     Commentary commentary = commentaryMapper.fromCommentaryDto(commentaryDto);
     commentary.setUser(user);

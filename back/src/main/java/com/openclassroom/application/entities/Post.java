@@ -3,7 +3,11 @@ package com.openclassroom.application.entities;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,6 +41,7 @@ public class Post {
 
   Date updated_at;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "post")
   List<Commentary> commentaries;
 

@@ -28,42 +28,39 @@ public class TopicServiceImpl implements TopicService {
   private final UserRepository userRepository;
 
   @Override
-  public ResponseEntity<?> getAllTopics() {
+  public List<TopicDto> getAllTopics() {
     List<Topic> topics = topicRepository.findAll();
     List<TopicDto> topicDtosList = topics.stream().map(topic -> topicMapper.fromTopic(topic))
         .collect(Collectors.toList());
-    return ResponseEntity.ok().body(topicDtosList);
+    return topicDtosList;
   }
 
   @Override
-  public ResponseEntity<?> subscribe(TopicDto topicDto) throws SubscriptionException {
+  public User subscribe(TopicDto topicDto) throws SubscriptionException {
     User user = userService.retrieveUserByContext();
     Topic topic = topicMapper.fromTopicDto(topicDto);
     List<Topic> userTopics = user.getTopics();
 
     if (userTopics.contains(topic)) {
-      return ResponseEntity.badRequest().body("You can't subscribe this topic");
+      return null;
       // throw new SubscriptionException("You can't subscribe this topic");
     }
-
     userTopics.add(topic);
-    userRepository.save(user);
-    return ResponseEntity.ok().body(null);
+    return userRepository.save(user);
   }
 
   @Override
-  public ResponseEntity<?> unsubscribe(TopicDto topicDto) throws SubscriptionException {
+  public User unsubscribe(TopicDto topicDto) throws SubscriptionException {
     User user = userService.retrieveUserByContext();
     Topic topic = topicMapper.fromTopicDto(topicDto);
     List<Topic> userTopics = user.getTopics();
 
     if (!userTopics.contains(topic)) {
-      return ResponseEntity.badRequest().body("You can't unsubscribe this topic");
+      return null;
       // throw new SubscriptionException("You can't unsubscribe this topic");
     }
     userTopics.remove(topic);
-    userRepository.save(user);
-    return ResponseEntity.ok().body(null);
+    return userRepository.save(user);
   }
 
 }

@@ -1,5 +1,7 @@
 package com.openclassroom.application.controllers;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.openclassroom.application.Dtos.CommentaryDto;
 import com.openclassroom.application.Dtos.PostDto;
 import com.openclassroom.application.entities.Commentary;
+import com.openclassroom.application.entities.Post;
 import com.openclassroom.application.implementation.CommentaryServiceImpl;
 import com.openclassroom.application.implementation.PostServiceImpl;
 
@@ -27,7 +30,8 @@ public class PostController {
 
   @GetMapping
   public ResponseEntity<?> findAllPosts() {
-    return postServiceImpl.findAllSubscribePostOfOneUser();
+    List<PostDto> postDtos = postServiceImpl.findAllSubscribePostOfOneUser();
+    return ResponseEntity.ok().body(postDtos);
   }
 
   @GetMapping("{id}")
@@ -41,17 +45,22 @@ public class PostController {
 
   @PostMapping
   public ResponseEntity<?> createPost(@RequestBody PostDto postDto) {
-    return postServiceImpl.createPost(postDto);
+    Post post = postServiceImpl.createPost(postDto);
+    if (post == null) {
+      return ResponseEntity.badRequest().build();
+    }
+    return ResponseEntity.ok().body(null);
   }
 
   @PostMapping("{id}")
   public ResponseEntity<?> createCommentary(@RequestBody CommentaryDto commentaryDto,
       @PathVariable(name = "id") Long postId) {
-    Commentary commentary = commentaryServiceImpl.createCommentary(commentaryDto, postId);
+    Commentary commentary = commentaryServiceImpl.createCommentary(commentaryDto,
+        postId);
     if (commentary == null) {
       return ResponseEntity.badRequest().build();
     }
-    return ResponseEntity.ok().body(null);
+    return ResponseEntity.ok().build();
   }
 
 }

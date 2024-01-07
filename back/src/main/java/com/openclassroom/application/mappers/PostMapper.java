@@ -11,13 +11,17 @@ public class PostMapper {
 
   public PostMapper() {
     modelMapper.createTypeMap(Post.class, PostDto.class)
-        .addMapping(src -> src.getTopic().getTitle(), PostDto::setTopic);
+        .addMapping(src -> src.getTopic().getTitle(), PostDto::setTopic)
+        .addMapping(src -> src.getCommentaries(), PostDto::setCommentaries);
+
   }
 
   private final ModelMapper modelMapper = new ModelMapper();
+  // private final PostRepository postRepository;
 
   public Post fromPostDto(PostDto postdDto) {
     return modelMapper.map(postdDto, Post.class);
+
   }
 
   public PostDto fromPost(Post post) {

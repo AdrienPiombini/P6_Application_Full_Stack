@@ -1,16 +1,19 @@
 package com.openclassroom.application.services;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 
 import com.openclassroom.application.Dtos.TopicDto;
+import com.openclassroom.application.entities.User;
 import com.openclassroom.application.exceptions.SubscriptionException;
 
 public interface TopicService {
 
-  ResponseEntity<?> getAllTopics();
+  List<TopicDto> getAllTopics();
 
-  ResponseEntity<?> subscribe(TopicDto topicDto) throws SubscriptionException;
+  User subscribe(TopicDto topicDto) throws SubscriptionException;
 
-  ResponseEntity<?> unsubscribe(TopicDto topicDto) throws SubscriptionException;
+  User unsubscribe(TopicDto topicDto) throws SubscriptionException;
 
 }

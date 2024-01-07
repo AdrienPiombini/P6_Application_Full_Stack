@@ -14,4 +14,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
   List<Post> findAllByTopicIn(List<Topic> topics);
 
+  // Post findByTitlePost(Title Title);
+
 }

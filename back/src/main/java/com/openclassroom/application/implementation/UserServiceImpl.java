@@ -56,11 +56,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public ResponseEntity<?> getAllTopicsSubscribeAt() {
+  public List<TopicDto> getAllTopicsSubscribeAt() {
     User user = retrieveUserByContext();
     List<Topic> topics = user.getTopics();
     List<TopicDto> topicDtosList = topics.stream().map(topic -> topicMapper.fromTopic(topic))
         .collect(Collectors.toList());
-    return ResponseEntity.ok().body(topicDtosList);
+    return topicDtosList;
   }
 }

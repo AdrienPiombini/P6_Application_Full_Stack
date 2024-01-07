@@ -1,7 +1,8 @@
 package com.openclassroom.application.services;
 
-import org.springframework.http.ResponseEntity;
+import java.util.List;
 
+import com.openclassroom.application.Dtos.TopicDto;
 import com.openclassroom.application.Dtos.UserDto;
 import com.openclassroom.application.entities.User;
 
@@ -13,5 +14,5 @@ public interface UserService {
 
     void removeUser();
 
-    ResponseEntity<?> getAllTopicsSubscribeAt();
+    List<TopicDto> getAllTopicsSubscribeAt();
 }

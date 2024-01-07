@@ -2,7 +2,6 @@ package com.openclassroom.application.Dtos;
 
 import java.util.List;
 
-import com.openclassroom.application.entities.Commentary;
 import com.openclassroom.application.entities.Enum.Title;
 
 import lombok.Data;
@@ -13,5 +12,6 @@ public class PostDto {
   private String title;
   private String content;
   private Title topic;
-  private List<Commentary> commentaries;
+  // private String user;
+  private List<CommentaryDto> commentaries;
 }
