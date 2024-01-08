@@ -34,8 +34,7 @@ public class Application {
 	) {
 		return args -> {
 			Stream.of(Title.BACKEND, Title.FRONTEND, Title.FULLSTACK).forEach(title -> {
-				Topic topic = new Topic();
-				topic.setTitle(title);
+				Topic topic = new Topic(title);
 				topic.setDescription("a classical description");
 				topicRepository.save(topic);
 			});
