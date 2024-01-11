@@ -9,6 +9,11 @@ import com.openclassroom.application.entities.Commentary;
 
 @Service
 public class CommentaryMapper {
+  public CommentaryMapper() {
+    modelMapper.createTypeMap(Commentary.class, CommentaryDto.class)
+        .addMapping(src -> src.getUser().getUsername(), CommentaryDto::setUser);
+  }
+
   private final ModelMapper modelMapper = new ModelMapper();
 
   public Commentary fromCommentaryDto(CommentaryDto commentaryDto) {

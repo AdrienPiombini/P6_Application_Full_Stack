@@ -52,7 +52,7 @@ public class PostController {
     return ResponseEntity.ok().body(null);
   }
 
-  @PostMapping("{id}")
+  @PostMapping("{id}/commentaries")
   public ResponseEntity<?> createCommentary(@RequestBody CommentaryDto commentaryDto,
       @PathVariable(name = "id") Long postId) {
     Commentary commentary = commentaryServiceImpl.createCommentary(commentaryDto,
@@ -62,5 +62,4 @@ public class PostController {
     }
     return ResponseEntity.ok().build();
   }
-
 }
