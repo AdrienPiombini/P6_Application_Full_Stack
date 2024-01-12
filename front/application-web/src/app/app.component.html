@@ -1,0 +1,15 @@
+<body>
+  <img src="../assets/logo_p6.png" alt="image" height="100px" />
+  <div class="button-container">
+    <div *ngIf="$isLogged() | async; else notLogged">
+      <span routerLink="post" class="link"><button>Article</button></span>
+      <span routerLink="topic" class="link"><button>Theme</button></span>
+      <span routerLink="profile" class="link"><button>Profile</button></span>
+    </div>
+    <ng-template #notLogged>
+      <span routerLink="login" class="link"><button>Login</button></span>
+      <span routerLink="register" class="link"><button>Register</button></span>
+    </ng-template>
+  </div>
+  <router-outlet></router-outlet>
+</body>
