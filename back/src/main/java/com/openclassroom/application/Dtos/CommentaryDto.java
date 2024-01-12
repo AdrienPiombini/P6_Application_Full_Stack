@@ -6,5 +6,6 @@ import lombok.Data;
 public class CommentaryDto {
 
   private String message;
+  private String user;
 
 }

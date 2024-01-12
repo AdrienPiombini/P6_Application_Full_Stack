@@ -12,6 +12,6 @@ public class PostDto {
   private String title;
   private String content;
   private Title topic;
-  // private String user;
+  private String user;
   private List<CommentaryDto> commentaries;
 }

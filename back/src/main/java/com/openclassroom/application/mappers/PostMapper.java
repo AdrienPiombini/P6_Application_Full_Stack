@@ -1,18 +1,25 @@
 package com.openclassroom.application.mappers;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.openclassroom.application.Dtos.PostDto;
 import com.openclassroom.application.entities.Post;
 
 @Service
+
 public class PostMapper {
+  @Autowired
+  CommentaryMapper commentaryMapper;
 
   public PostMapper() {
     modelMapper.createTypeMap(Post.class, PostDto.class)
         .addMapping(src -> src.getTopic().getTitle(), PostDto::setTopic)
-        .addMapping(src -> src.getCommentaries(), PostDto::setCommentaries);
+        .addMapping(src -> src.getUser().getUsername(), PostDto::setUser);
+
+    // .addMapping(src -> commentaryMapper.fromCommentary(src.getCommentaries()),
+    // PostDto::setCommentaries);
 
   }
 
