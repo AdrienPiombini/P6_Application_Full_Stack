@@ -8,7 +8,11 @@ import { Route, Router } from '@angular/router';
 })
 export class AllPostsComponent {
   constructor(private router: Router) {}
+
   redirectionToOnePost() {
     this.router.navigate(['posts/1']);
+  }
+  redirectionToCreatePost() {
+    this.router.navigate(['posts/create']);
   }
 }

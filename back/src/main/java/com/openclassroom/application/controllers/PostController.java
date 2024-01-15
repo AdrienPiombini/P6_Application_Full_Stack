@@ -1,5 +1,6 @@
 package com.openclassroom.application.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ import com.openclassroom.application.implementation.PostServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("post")
+@RequestMapping("/post")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class PostController {
@@ -51,7 +52,7 @@ public class PostController {
     if (post == null) {
       return ResponseEntity.badRequest().build();
     }
-    return ResponseEntity.ok().body(null);
+    return ResponseEntity.ok().body(new HashMap<>());
   }
 
   @PostMapping("{id}/commentaries")

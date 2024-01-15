@@ -19,7 +19,7 @@ public class AuthenticationController {
 
     private final AuthenticationServiceImpl authenticationServiceImpl;
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserDto userDto) {
         return authenticationServiceImpl.register(userDto);
     }

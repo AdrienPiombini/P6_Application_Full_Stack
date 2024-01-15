@@ -1,0 +1,14 @@
+<div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input type="text" placeholder="Title" formControlName="title" />
+    <input type="text" placeholder="Content" formControlName="content" />
+    <select formControlName="topic">
+      <option value="">BACKEND</option>
+      <option value="">FRONTEND</option>
+    </select>
+    <br />
+    <button>Submit</button>
+  </form>
+  <br />
+  <span routerLink="/posts" class="link"><button>Retour</button></span>
+</div>

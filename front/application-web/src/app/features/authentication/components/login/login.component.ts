@@ -29,18 +29,12 @@ export class LoginComponent {
 
   public submit(): void {
     const loginRequest = this.form.value as LoginRequest;
-    this.authenticationService
-      .login(
-        loginRequest
-        // {email: 'test@test.com',
-        // password: 'test!31',}
-      )
-      .subscribe({
-        next: (response: any) => {
-          this.sessionService.logIn(response);
-          this.router.navigate(['/posts']);
-        },
-        error: (error) => (this.onError = true),
-      });
+    this.authenticationService.login(loginRequest).subscribe({
+      next: (response: any) => {
+        this.sessionService.logIn(response);
+        this.router.navigate(['/posts']);
+      },
+      error: (error) => (this.onError = true),
+    });
   }
 }

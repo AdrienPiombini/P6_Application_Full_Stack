@@ -46,7 +46,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     user.setPassword(passwordEncoder.encode(userDto.getPassword()));
     userRepository.save(user);
     String token = jwtService.generateToken(user);
-    return ResponseEntity.ok().body(token);
+    Map<String, String> response = new HashMap<>();
+    response.put("token", token);
+    return ResponseEntity.ok().body(response);
   }
 
   @Override
