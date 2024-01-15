@@ -1,6 +1,7 @@
 package com.openclassroom.application.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AuthenticationController {
 
     private final AuthenticationServiceImpl authenticationServiceImpl;
@@ -22,7 +24,7 @@ public class AuthenticationController {
         return authenticationServiceImpl.register(userDto);
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDto userDto) {
         return authenticationServiceImpl.login(userDto);
     }

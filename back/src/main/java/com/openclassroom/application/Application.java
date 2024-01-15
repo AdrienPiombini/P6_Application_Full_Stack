@@ -18,7 +18,7 @@ import com.openclassroom.application.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 @SpringBootApplication
-@RequiredArgsConstructor // to Remove
+@RequiredArgsConstructor
 public class Application {
 	final PasswordEncoder passwordEncoder;
 
@@ -38,7 +38,11 @@ public class Application {
 				topic.setDescription("a classical description");
 				topicRepository.save(topic);
 			});
-
+			User test = new User();
+			test.setEmail("test@test");
+			test.setPassword(passwordEncoder.encode("test"));
+			test.setRole(Role.USER);
+			userRepository.save(test);
 			Stream.of("Adrien", "Foo", "John").forEach(name -> {
 				User user = new User();
 				user.setEmail(name + "@gmail.com");
@@ -47,11 +51,6 @@ public class Application {
 				user.setRole(Role.USER);
 				userRepository.save(user);
 			});
-
-			// Topic topic = topicRepository.getReferenceById(1L);
-			// User user = userRepository.getReferenceById(1L);
-			// user.setTopics(List.of(topic));
-			// userRepository.save(user);
 		};
 	}
 

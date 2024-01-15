@@ -11,7 +11,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'post',
+    path: 'posts',
     loadChildren: () =>
       import('./features/session/session.module').then((m) => m.SessionModule),
   },

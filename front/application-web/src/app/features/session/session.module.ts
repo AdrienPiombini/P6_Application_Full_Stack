@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostComponent } from './components/post/post.component';
+import { AllPostsComponent } from './components/allPostsComponent/allPostsComponent.component';
 import { SessionRoutingModule } from './session-routing.module';
+import { OnePostComponent } from './components/one-post/one-post.component';
 
 @NgModule({
-  declarations: [PostComponent],
+  declarations: [AllPostsComponent, OnePostComponent],
   imports: [SessionRoutingModule, CommonModule],
 })
 export class SessionModule {}
