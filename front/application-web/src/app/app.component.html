@@ -2,8 +2,8 @@
   <img src="../assets/logo_p6.png" alt="image" height="100px" />
   <div class="button-container">
     <div *ngIf="$isLogged() | async; else notLogged">
-      <span routerLink="post" class="link"><button>Article</button></span>
-      <span routerLink="topic" class="link"><button>Theme</button></span>
+      <span routerLink="posts" class="link"><button>Article</button></span>
+      <span routerLink="topics" class="link"><button>Theme</button></span>
       <span (click)="logout()" class="link">Logout</span>
     </div>
     <ng-template #notLogged>

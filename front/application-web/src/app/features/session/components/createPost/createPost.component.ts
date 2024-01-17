@@ -24,7 +24,10 @@ export class CreatePostComponent {
   });
   public submit() {
     const request = this.form.value as unknown as PostRequest;
-    this.postService.createPost(request);
-    this.router.navigate(['/posts']);
+    this.postService.createPost(request).subscribe({
+      next: () => {
+        this.router.navigate(['/posts']);
+      },
+    });
   }
 }
