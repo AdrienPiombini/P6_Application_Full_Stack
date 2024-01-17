@@ -1,5 +1,7 @@
 package com.openclassroom.application.implementation;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -44,7 +46,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     user.setPassword(passwordEncoder.encode(userDto.getPassword()));
     userRepository.save(user);
     String token = jwtService.generateToken(user);
-    return ResponseEntity.ok().body(token);
+    Map<String, String> response = new HashMap<>();
+    response.put("token", token);
+    return ResponseEntity.ok().body(response);
   }
 
   @Override
@@ -55,7 +59,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
       authenticationManager.authenticate(authentication);
       User user = userRepository.findByEmail(userDto.getEmail()).get();
       String token = jwtService.generateToken(user);
-      return ResponseEntity.ok().body(token);
+
+      Map<String, String> response = new HashMap<>();
+      response.put("token", token);
+
+      return ResponseEntity.ok().body(response);
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Bad Credentials");
     }

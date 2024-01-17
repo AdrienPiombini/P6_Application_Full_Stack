@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const materialModules = [
   MatButtonModule,
@@ -25,6 +25,7 @@ const materialModules = [
     CommonModule,
     ...materialModules,
     FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AuthenticationModule {}

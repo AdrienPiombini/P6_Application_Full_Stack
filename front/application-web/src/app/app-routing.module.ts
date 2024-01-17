@@ -1,22 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TopicComponent } from './components/topic/topic.component';
+import { UnauthGuard } from './guards/unauth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
-    // canActivate: [UnauthGuard],
+    canActivate: [UnauthGuard],
     loadChildren: () =>
       import('./features/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
       ),
   },
   {
-    path: 'post',
+    path: 'posts',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./features/session/session.module').then((m) => m.SessionModule),
   },
-  // { path: '404', component: NotFoundComponent },
-  // { path: '**', redirectTo: '404' }
+  {
+    path: 'topics',
+    canActivate: [AuthGuard],
+    component: TopicComponent,
+  },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '404' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

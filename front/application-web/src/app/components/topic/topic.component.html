@@ -1,0 +1,7 @@
+<div *ngFor="let topic of topics">
+  <div class="topic-container">
+    <h3>{{ topic.title }}</h3>
+    <p>{{ topic.description }}</p>
+    <button (click)="subscribeToTopic(topic)">Subscribe</button>
+  </div>
+</div>

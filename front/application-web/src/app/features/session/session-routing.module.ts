@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostComponent } from './components/post/post.component';
+import { AllPostsComponent } from './components/allPostsComponent/allPostsComponent.component';
 import { RouterModule, Routes } from '@angular/router';
+import { OnePostComponent } from './components/onePost/onePost.component';
+import { CreatePostComponent } from './components/createPost/createPost.component';
 
-const routes: Routes = [{ path: '', title: 'home', component: PostComponent }];
+const routes: Routes = [
+  { path: '', title: 'home', component: AllPostsComponent },
+  { path: ':id', title: 'one post', component: OnePostComponent },
+  { path: 'create', title: 'create a post', component: CreatePostComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
