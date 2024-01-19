@@ -1,17 +1,30 @@
-<br />
-<span (click)="redirectionToCreatePost()" class="link"
-  >Click here to create a POST</span
+<button
+  type="button"
+  class="btn btn-dark mb-3"
+  (click)="redirectionToCreatePost()"
 >
+  Click here to create a POST
+</button>
 
 <div *ngIf="posts && posts.length > 0">
-  <div *ngFor="let post of posts">
-    <div class="topic-container">
-      <h3>Title of post : {{ post.title }}</h3>
-      <p>{{ post.content }}</p>
-      <p>topic : {{ post.topic }}</p>
-      <p>auther : {{ post.user }}</p>
-      <p>id :{{ post.id }}</p>
-      <button (click)="redirectionToOnePost(post.id)">See article</button>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let post of posts">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Title : {{ post.title }}</h5>
+          <p class="card-text">
+            {{ post.content }}
+          </p>
+          <p class="card-text">topic : {{ post.topic }}</p>
+          <p class="card-text">auther : {{ post.user }}</p>
+          <button
+            (click)="redirectionToOnePost(post.id)"
+            class="btn btn-primary"
+          >
+            See article
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

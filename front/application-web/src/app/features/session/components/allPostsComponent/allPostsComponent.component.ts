@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Post } from '../../models/post.models';
 import { PostService } from '../../services/postService.service';
 
@@ -24,6 +24,6 @@ export class AllPostsComponent implements OnInit {
     this.router.navigate([`posts/${id}`]);
   }
   redirectionToCreatePost() {
-    this.router.navigate(['posts/create']);
+    this.router.navigate(['/posts/create']);
   }
 }

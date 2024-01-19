@@ -6,6 +6,7 @@ export class Post {
     public title: string,
     public content: string,
     public topic: TopicTitle,
+    public created_at: string,
     public user: string
   ) {}
 }

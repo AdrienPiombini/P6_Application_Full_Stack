@@ -7,9 +7,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptors';
 import { TopicComponent } from './components/topic/topic.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, TopicComponent, NotFoundComponent],
+  declarations: [AppComponent, TopicComponent, NotFoundComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

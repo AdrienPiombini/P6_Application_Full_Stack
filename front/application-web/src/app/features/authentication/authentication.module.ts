@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
 
 const materialModules = [
   MatButtonModule,
@@ -19,7 +20,7 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, AuthenticationComponent],
   imports: [
     AuthenticationRoutingModule,
     CommonModule,

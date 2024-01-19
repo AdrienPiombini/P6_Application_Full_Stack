@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AllPostsComponent } from './components/allPostsComponent/allPostsComponent.component';
 import { RouterModule, Routes } from '@angular/router';
 import { OnePostComponent } from './components/onePost/onePost.component';

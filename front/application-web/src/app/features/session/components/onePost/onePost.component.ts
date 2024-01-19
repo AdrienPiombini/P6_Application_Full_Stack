@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/postService.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../models/post.models';
 
 @Component({
@@ -13,7 +13,8 @@ export class OnePostComponent implements OnInit {
   post!: Post;
   constructor(
     private readonly postService: PostService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +24,9 @@ export class OnePostComponent implements OnInit {
         .getOnePost(+this.postId)
         .subscribe((post) => (this.post = post));
     }
+  }
+
+  redirectionToAllPosts() {
+    this.router.navigate([`posts`]);
   }
 }

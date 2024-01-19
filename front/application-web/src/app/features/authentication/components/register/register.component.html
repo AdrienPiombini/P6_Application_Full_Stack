@@ -1,29 +1,59 @@
-<div class="register" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card>
-    <mat-card-header fxLayoutAlign="center center">
-      <mat-card-title>Register</mat-card-title>
-    </mat-card-header>
-    <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
-      <mat-card-content fxLayout="column">
-        <mat-form-field fxFlex>
-          <input matInput placeholder="Email" formControlName="email" />
-        </mat-form-field>
-        <mat-form-field fxFlex>
-          <input matInput placeholder="Username" formControlName="username" />
-        </mat-form-field>
-        <mat-form-field fxFlex>
-          <input matInput placeholder="Password" formControlName="password" />
-        </mat-form-field>
-      </mat-card-content>
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        [disabled]="form.invalid"
-      >
-        Submit
-      </button>
-      <span *ngIf="onError" class="error ml2">An error occurred</span>
-    </form>
-  </mat-card>
-</div>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+              <p class="text-white-50 mb-5">Welcome !</p>
+              <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="form-outline form-white mb-4">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    formControlName="email"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    formControlName="username"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <input
+                    placeholder="Password"
+                    type="password"
+                    formControlName="password"
+                    class="form-control form-control-lg"
+                  />
+                </div>
+                <button
+                  class="btn btn-outline-light btn-lg px-5"
+                  [disabled]="form.invalid"
+                  type="submit"
+                >
+                  Register
+                </button>
+                <p *ngIf="onError" class="error">An error occurred</p>
+              </form>
+            </div>
+
+            <div>
+              <p class="mb-0">
+                Already register ?
+                <a routerLink="/login" class="text-white-50 fw-bold">Sign in</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
