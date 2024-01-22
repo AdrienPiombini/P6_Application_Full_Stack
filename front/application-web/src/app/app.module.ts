@@ -8,9 +8,10 @@ import { JwtInterceptor } from './interceptors/jwt.interceptors';
 import { TopicComponent } from './components/topic/topic.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, TopicComponent, NotFoundComponent, NavbarComponent],
+  declarations: [AppComponent, TopicComponent, NotFoundComponent, NavbarComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

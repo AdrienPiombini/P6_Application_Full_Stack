@@ -1,0 +1,57 @@
+<div class="row d-flex justify-content-center align-items-center">
+  <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <div class="card text-dark" style="border-radius: 1rem">
+      <div class="card-body p-5 text-center">
+        <div *ngIf="profile" class="mb-md-5 mt-md-4 pb-5">
+          <h2 class="fw-bold mb-2 text-uppercase">Profile</h2>
+          <form>
+            <div class="form-outline form-white mb-4">
+              <input
+                type="email"
+                placeholder="{{ profile.username }}"
+                formControlName="email"
+                class="form-control form-control-lg"
+              />
+            </div>
+            <div class="form-outline form-white mb-4">
+              <input
+                type="text"
+                placeholder="{{ profile.email }}"
+                formControlName="username"
+                class="form-control form-control-lg"
+              />
+            </div>
+            <button
+              class="btn btn-outline-dark btn-lg px-5"
+              [disabled]="form.invalid"
+              type="submit"
+            >
+              Save
+            </button>
+            <!-- <p *ngIf="onError" class="error">An error occurred</p> -->
+          </form>
+          <a class="nav-link text-danger" (click)="logout()"> Logout </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<div>
+  <h4>Subscriptions !</h4>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let topic of topics">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Title : {{ topic.title }}</h5>
+          <p class="card-text">
+            {{ topic.description }}
+          </p>
+          <button (click)="unsubscribeToTopic(topic)" class="btn btn-primary">
+            Unsubscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

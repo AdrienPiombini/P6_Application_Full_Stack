@@ -16,7 +16,8 @@
             {{ post.content }}
           </p>
           <p class="card-text">topic : {{ post.topic }}</p>
-          <p class="card-text">auther : {{ post.user }}</p>
+          <p class="card-text">author : {{ post.user }}</p>
+          <p class="card-text">date : {{ post.created_at | date }}</p>
           <button
             (click)="redirectionToOnePost(post.id)"
             class="btn btn-primary"

@@ -7,6 +7,12 @@ export class Post {
     public content: string,
     public topic: TopicTitle,
     public created_at: string,
-    public user: string
+    public user: string,
+    public commentaries: Commentary[]
   ) {}
 }
+export type Commentary = {
+  message: string;
+  user: string;
+  created_at: Date;
+};

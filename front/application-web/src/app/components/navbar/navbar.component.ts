@@ -9,7 +9,6 @@ import { SessionService } from 'src/app/services/session.service';
 })
 export class NavbarComponent {
   constructor(private router: Router, private sessionService: SessionService) {}
-
   public logout(): void {
     this.sessionService.logOut();
     this.router.navigate(['']);

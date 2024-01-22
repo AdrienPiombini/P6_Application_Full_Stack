@@ -17,6 +17,8 @@ export class CreatePostComponent {
     private formBuilder: FormBuilder
   ) {}
 
+  public onError = false;
+
   public form = this.formBuilder.group({
     title: ['', [Validators.required, Validators.min(3)]],
     content: ['', [Validators.required, Validators.max(300)]],
@@ -28,6 +30,7 @@ export class CreatePostComponent {
       next: () => {
         this.router.navigate(['/posts']);
       },
+      error: (error) => (this.onError = true),
     });
   }
 }
