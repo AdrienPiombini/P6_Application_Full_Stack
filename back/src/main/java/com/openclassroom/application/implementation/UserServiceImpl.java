@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.openclassroom.application.mappers.UserMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,6 +29,7 @@ public class UserServiceImpl implements UserService {
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
   private final TopicMapper topicMapper;
+  private final UserMapper userMapper;
 
   public User retrieveUserByContext() {
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -36,6 +38,12 @@ public class UserServiceImpl implements UserService {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
     return user.get();
+  }
+
+  public UserDto getProfile(){
+    User user = retrieveUserByContext();
+    System.out.println(user);
+    return userMapper.fromUser(user);
   }
 
   @Override

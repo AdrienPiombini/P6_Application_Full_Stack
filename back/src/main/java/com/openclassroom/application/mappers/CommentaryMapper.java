@@ -7,6 +7,9 @@ import com.openclassroom.application.Dtos.CommentaryDto;
 
 import com.openclassroom.application.entities.Commentary;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CommentaryMapper {
   public CommentaryMapper() {
@@ -22,5 +25,13 @@ public class CommentaryMapper {
 
   public CommentaryDto fromCommentary(Commentary commentary) {
     return modelMapper.map(commentary, CommentaryDto.class);
+  }
+
+  public List<CommentaryDto> fromCommentaryList(List<Commentary> commentaryList){
+    List<CommentaryDto> result = new ArrayList<>();
+    for(Commentary commentary : commentaryList){
+      result.add(modelMapper.map(commentary, CommentaryDto.class));
+    }
+    return result;
   }
 }

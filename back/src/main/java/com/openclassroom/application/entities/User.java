@@ -38,6 +38,9 @@ public class User implements UserDetails {
 
     }
 
+    public String getEmail(){
+        return username;
+    }
     @Override
     public String getUsername() {
         return email;
