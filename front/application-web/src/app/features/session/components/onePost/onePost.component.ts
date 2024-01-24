@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../models/post.models';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommentaryRequest } from '../../Interfaces/CommentaryRequest';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-onePost',
@@ -13,6 +14,9 @@ import { CommentaryRequest } from '../../Interfaces/CommentaryRequest';
 export class OnePostComponent implements OnInit {
   postId: null | string = '0';
   post!: Post;
+  public onError = false;
+  haveCommentary = false;
+
   constructor(
     private readonly postService: PostService,
     private readonly route: ActivatedRoute,
@@ -20,12 +24,13 @@ export class OnePostComponent implements OnInit {
     private readonly formBuilder: FormBuilder
   ) {}
 
-  public onError = false;
-
   ngOnInit(): void {
     this.postId = this.route.snapshot.paramMap.get('id');
     if (this.postId != null) {
       this.postService.getOnePost(+this.postId).subscribe((post) => {
+        if (post.commentaries.length != 0) {
+          this.haveCommentary = true;
+        }
         this.post = post;
       });
     }
@@ -44,7 +49,6 @@ export class OnePostComponent implements OnInit {
     if (this.postId != null) {
       this.postService.createCommentary(request, +this.postId).subscribe({
         next: () => {
-          console.log('toto');
           this.reloadCurrentRoute();
         },
         error: (error) => {

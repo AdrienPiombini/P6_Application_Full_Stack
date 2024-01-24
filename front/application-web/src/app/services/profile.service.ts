@@ -15,6 +15,10 @@ export class ProfileService {
   }
 
   public getAllTopicSubsribeAt(): Observable<Topic[]> {
-    return this.httpClient.get<Topic[]>('http://localhost:8080/topics');
+    return this.httpClient.get<Topic[]>('http://localhost:8080/user/topics');
+  }
+
+  public save(profile: Profile): Observable<Profile> {
+    return this.httpClient.put<Profile>('http://localhost:8080/user', profile);
   }
 }

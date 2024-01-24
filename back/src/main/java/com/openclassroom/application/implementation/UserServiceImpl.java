@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService {
 
   public UserDto getProfile(){
     User user = retrieveUserByContext();
-    System.out.println(user);
-    return userMapper.fromUser(user);
+    UserDto userDto = userMapper.fromUser(user);
+    return userDto;
   }
 
   @Override
@@ -52,7 +52,6 @@ public class UserServiceImpl implements UserService {
     User user = userRepository.findByEmail(authEmail).get();
     user.setEmail(userDto.getEmail());
     user.setUsername(userDto.getUsername());
-    user.setPassword(passwordEncoder.encode(userDto.getPassword()));
     return userRepository.save(user);
   }
 

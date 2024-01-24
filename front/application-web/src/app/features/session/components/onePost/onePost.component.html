@@ -25,12 +25,9 @@
 </div>
 <br />
 <hr />
-<div
-  *ngIf="post.commentaries && post.commentaries.length > 0"
-  class="container"
->
+<div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="haveCommentary">
       <h5 class="card-title">Commentaries :</h5>
       <div class="card">
         <div class="card-body" *ngFor="let commentary of post.commentaries">

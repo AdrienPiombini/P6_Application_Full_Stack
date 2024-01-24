@@ -16,4 +16,8 @@ export class TopicService {
   public subscribeToTopic(topic: Topic): Observable<void> {
     return this.httpClient.post<void>('http://localhost:8080/topics', topic);
   }
+
+  public unsubscribeToTopic(topic: Topic): Observable<void> {
+    return this.httpClient.put<void>('http://localhost:8080/topics', topic);
+  }
 }

@@ -29,7 +29,6 @@ public class UserController {
   @GetMapping
   public ResponseEntity<?> getProfile(){
     UserDto userDto = userServiceImpl.getProfile();
-    System.out.println(userDto);
     return ResponseEntity.ok().body(userDto);
   }
 
