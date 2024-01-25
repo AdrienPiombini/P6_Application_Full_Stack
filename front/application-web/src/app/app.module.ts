@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtInvalidInterceptor } from './interceptors/jwtInvalid.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInvalidInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

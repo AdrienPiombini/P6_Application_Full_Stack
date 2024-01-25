@@ -17,7 +17,12 @@ export class AllPostsComponent implements OnInit {
   ngOnInit(): void {
     this.postService
       .findAllSubscribePostOfOneUser()
-      .subscribe((post: Post[]) => (this.posts = post));
+      .subscribe(
+        (post: Post[]) =>
+          (this.posts = post.sort(
+            (a, b) => +new Date(b.created_at) - +new Date(a.created_at)
+          ))
+      );
   }
 
   redirectionToOnePost(id: Number) {
