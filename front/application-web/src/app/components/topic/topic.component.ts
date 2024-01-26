@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { TopicTitle } from 'src/app/interfaces/topic.interface';
 import { Topic } from 'src/app/models/topic.models';
 import { TopicService } from 'src/app/services/topic.service';
 

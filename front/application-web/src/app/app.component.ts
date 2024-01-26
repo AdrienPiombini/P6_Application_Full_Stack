@@ -9,14 +9,9 @@ import { SessionService } from './services/session.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(private router: Router, private sessionService: SessionService) {}
+  constructor(private sessionService: SessionService) {}
 
   public $isLogged(): Observable<boolean> {
     return this.sessionService.$isLogged();
-  }
-
-  public logout(): void {
-    this.sessionService.logOut();
-    this.router.navigate(['']);
   }
 }

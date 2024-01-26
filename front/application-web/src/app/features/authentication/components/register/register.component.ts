@@ -19,6 +19,8 @@ export class RegisterComponent {
     private formBuilder: FormBuilder
   ) {}
   public onError = false;
+  passwordRegex: RegExp =
+    /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
 
   public form = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -28,7 +30,11 @@ export class RegisterComponent {
     ],
     password: [
       '',
-      [Validators.required, Validators.min(3), Validators.max(40)],
+      [
+        Validators.required,
+        Validators.min(8),
+        Validators.pattern(this.passwordRegex),
+      ],
     ],
   });
 

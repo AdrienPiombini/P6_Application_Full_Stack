@@ -6,7 +6,7 @@ import {
 import { Injectable } from '@angular/core';
 import { SessionService } from '../services/session.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class JwtInterceptor implements HttpInterceptor {
   constructor(private sessionService: SessionService) {}
 

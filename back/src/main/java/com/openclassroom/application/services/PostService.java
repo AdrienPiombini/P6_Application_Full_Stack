@@ -6,7 +6,7 @@ import com.openclassroom.application.Dtos.PostDto;
 import com.openclassroom.application.entities.Post;
 
 public interface PostService {
-  Post createPost(PostDto postdDto);
+  Post createPost(PostDto postDto);
 
   List<PostDto> findAllSubscribePostOfOneUser();
 

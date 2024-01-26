@@ -1,7 +1,17 @@
-<div *ngFor="let topic of topics">
-  <div class="topic-container">
-    <h3>{{ topic.title }}</h3>
-    <p>{{ topic.description }}</p>
-    <button (click)="subscribeToTopic(topic)">Subscribe</button>
+<div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let topic of topics">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Title : {{ topic.title }}</h5>
+          <p class="card-text">
+            {{ topic.description }}
+          </p>
+          <button (click)="subscribeToTopic(topic)" class="btn btn-primary">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

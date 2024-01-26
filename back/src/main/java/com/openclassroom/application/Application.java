@@ -40,6 +40,7 @@ public class Application {
 			});
 			User test = new User();
 			test.setEmail("test@test");
+			test.setUsername("Adrien");
 			test.setPassword(passwordEncoder.encode("test"));
 			test.setRole(Role.USER);
 			userRepository.save(test);

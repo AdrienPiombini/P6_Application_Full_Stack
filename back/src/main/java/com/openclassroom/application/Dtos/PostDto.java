@@ -1,5 +1,6 @@
 package com.openclassroom.application.Dtos;
 
+import java.util.Date;
 import java.util.List;
 
 import com.openclassroom.application.entities.Enum.Title;
@@ -13,5 +14,6 @@ public class PostDto {
   private String content;
   private Title topic;
   private String user;
+  private Date created_at;
   private List<CommentaryDto> commentaries;
 }

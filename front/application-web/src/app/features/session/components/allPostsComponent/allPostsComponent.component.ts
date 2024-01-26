@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Post } from '../../models/post.models';
 import { PostService } from '../../services/postService.service';
 
@@ -17,13 +17,18 @@ export class AllPostsComponent implements OnInit {
   ngOnInit(): void {
     this.postService
       .findAllSubscribePostOfOneUser()
-      .subscribe((post: Post[]) => (this.posts = post));
+      .subscribe(
+        (post: Post[]) =>
+          (this.posts = post.sort(
+            (a, b) => +new Date(b.created_at) - +new Date(a.created_at)
+          ))
+      );
   }
 
   redirectionToOnePost(id: Number) {
     this.router.navigate([`posts/${id}`]);
   }
   redirectionToCreatePost() {
-    this.router.navigate(['posts/create']);
+    this.router.navigate(['/posts/create']);
   }
 }

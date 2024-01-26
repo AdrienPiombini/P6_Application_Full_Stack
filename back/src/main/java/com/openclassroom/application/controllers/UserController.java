@@ -27,6 +27,12 @@ public class UserController {
   private final UserServiceImpl userServiceImpl;
 
   @GetMapping
+  public ResponseEntity<?> getProfile(){
+    UserDto userDto = userServiceImpl.getProfile();
+    return ResponseEntity.ok().body(userDto);
+  }
+
+  @GetMapping("/topics")
   public ResponseEntity<?> getAllSubscription() {
     List<TopicDto> topicDtos = userServiceImpl.getAllTopicsSubscribeAt();
     return ResponseEntity.ok().body(topicDtos);
