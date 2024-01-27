@@ -2,53 +2,60 @@
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-dark text-white" style="border-radius: 1rem">
+        <div class="card" style="border-radius: 1rem">
           <div class="card-body p-5 text-center">
+            <span routerLink=""
+              ><button
+                type="button"
+                class="btn bi-arrow-left"
+                aria-label="Close"
+              ></button
+            ></span>
             <div class="mb-md-5 mt-md-4 pb-5">
-              <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
-              <p class="text-white-50 mb-5">Welcome !</p>
+              <h2 class="fw-bold mb-2 text-uppercase">Inscription</h2>
+              <p class="mb-5">Bienvenue !</p>
               <form [formGroup]="form" (ngSubmit)="submit()">
                 <div class="form-outline form-white mb-4">
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder="Adresse e-mail"
                     formControlName="email"
                     class="form-control form-control-lg"
                   />
                 </div>
 
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline mb-4">
                   <input
                     type="text"
-                    placeholder="Username"
+                    placeholder="Identifiant"
                     formControlName="username"
                     class="form-control form-control-lg"
                   />
                 </div>
 
-                <div class="form-outline form-white mb-4">
+                <div class="form-outline mb-4">
                   <input
-                    placeholder="Password"
+                    placeholder="Mot de passe"
                     type="password"
                     formControlName="password"
                     class="form-control form-control-lg"
                   />
                 </div>
                 <button
-                  class="btn btn-outline-light btn-lg px-5"
+                  class="btn px-5"
                   [disabled]="form.invalid"
                   type="submit"
                 >
-                  Register
+                  S'inscrire
                 </button>
-                <p *ngIf="onError" class="error">An error occurred</p>
+                <p *ngIf="onError" class="error">Une erreur est survenue</p>
               </form>
             </div>
 
             <div>
               <p class="mb-0">
-                Already register ?
-                <a routerLink="/login" class="text-white-50 fw-bold">Sign in</a>
+                Déjà inscrit ?
+                <a routerLink="/login" class="fw-bold">Se connecter </a>
               </p>
             </div>
           </div>

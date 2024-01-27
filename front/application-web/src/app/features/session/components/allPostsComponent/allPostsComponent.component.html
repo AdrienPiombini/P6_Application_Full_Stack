@@ -1,9 +1,9 @@
 <button
   type="button"
-  class="btn btn-dark mb-3"
+  class="btn btn-primary mb-3"
   (click)="redirectionToCreatePost()"
 >
-  Click here to create a POST
+  Créer un article
 </button>
 
 <div *ngIf="posts && posts.length > 0">
@@ -13,16 +13,16 @@
         <div class="card-body">
           <h5 class="card-title">Title : {{ post.title }}</h5>
           <p class="card-text">
+            date : {{ post.created_at | date }} autauteur : {{ post.user }}
+          </p>
+          <p class="card-text">
             {{ post.content }}
           </p>
-          <p class="card-text">topic : {{ post.topic }}</p>
-          <p class="card-text">author : {{ post.user }}</p>
-          <p class="card-text">date : {{ post.created_at | date }}</p>
           <button
             (click)="redirectionToOnePost(post.id)"
             class="btn btn-primary"
           >
-            See article
+            Voir l'article
           </button>
         </div>
       </div>

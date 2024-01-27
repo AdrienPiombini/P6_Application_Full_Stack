@@ -3,10 +3,16 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
+          <button
+            type="button"
+            (click)="redirectionToAllPosts()"
+            class="btn bi-arrow-left"
+            aria-label="Close"
+          ></button>
           <h5 class="card-title">Title : {{ post.title }}</h5>
 
           <p class="card-text">
-            date : {{ post.created_at | date }} topic : {{ post.topic }} auther
+            date : {{ post.created_at | date }} thèmes : {{ post.topic }} auteur
             : {{ post.user }}
           </p>
           <p class="card-text">
@@ -15,12 +21,6 @@
         </div>
       </div>
     </div>
-    <button
-      type="button"
-      (click)="redirectionToAllPosts()"
-      class="btn-close"
-      aria-label="Close"
-    ></button>
   </div>
 </div>
 <br />
@@ -28,15 +28,15 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6" *ngIf="haveCommentary">
-      <h5 class="card-title">Commentaries :</h5>
+      <h5 class="card-title">Commentaires :</h5>
       <div class="card">
         <div class="card-body" *ngFor="let commentary of post.commentaries">
           <p class="card-text">
             {{ commentary.message }}
           </p>
           <p class="card-text">
-            By : {{ commentary.user }} <br />
-            On {{ commentary.created_at | date : "dd/MM/yyyy HH:mm" }}
+            Par : {{ commentary.user }} <br />
+            Le {{ commentary.created_at | date : "dd/MM/yyyy HH:mm" }}
           </p>
           <p class="card-text"></p>
           <p></p>
@@ -49,11 +49,11 @@
     <div class="form-outline form-white mb-4 larger-textarea">
       <textarea
         type="textarea"
-        placeholder="Commentary"
+        placeholder="Commentaire"
         formControlName="message"
         class="form-control form-control-lg"
       ></textarea>
-      <button type="submit" class="btn btn-dark mb-3">Post a comment</button>
+      <button type="submit" class="btn bi-check btn-dark mb-3"></button>
     </div>
   </form>
 </div>
