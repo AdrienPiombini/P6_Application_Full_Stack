@@ -3,13 +3,15 @@
     <div class="col" *ngFor="let topic of topics">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Title : {{ topic.title }}</h5>
+          <h5 class="card-title">Titre du thème : {{ topic.title }}</h5>
           <p class="card-text">
             {{ topic.description }}
           </p>
-          <button (click)="subscribeToTopic(topic)" class="btn btn-primary">
-            Subscribe
-          </button>
+          <div class="d-flex justify-content-center">
+            <button (click)="subscribeToTopic(topic)" class="btn">
+              S'abonner
+            </button>
+          </div>
         </div>
       </div>
     </div>

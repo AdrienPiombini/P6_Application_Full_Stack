@@ -1,3 +1,4 @@
 .active-link {
-  font-weight: bold; /* ou toute autre mise en forme que vous souhaitez pour le bouton actif */
+  font-weight: bold;
+  color: rgb(115, 63, 219);
 }

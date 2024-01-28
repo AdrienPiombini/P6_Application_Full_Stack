@@ -18,7 +18,6 @@ export class JwtInvalidInterceptor implements HttpInterceptor {
       tap(
         () => {},
         (error: any) => {
-          console.log(error);
           if (error instanceof HttpErrorResponse) {
             if (error.status != 401) {
               return;
