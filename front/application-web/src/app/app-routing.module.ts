@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'posts',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('./features/session/session.module').then((m) => m.SessionModule),
+      import('./features/post/post.module').then((m) => m.SessionModule),
   },
   {
     path: 'topics',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AllPostsComponent } from './components/allPostsComponent/allPostsComponent.component';
-import { SessionRoutingModule } from './session-routing.module';
+import { SessionRoutingModule } from './post-routing.module';
 import { OnePostComponent } from './components/onePost/onePost.component';
 import { CreatePostComponent } from './components/createPost/createPost.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
