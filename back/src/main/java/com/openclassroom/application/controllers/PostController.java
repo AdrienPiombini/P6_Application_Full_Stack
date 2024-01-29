@@ -16,8 +16,8 @@ import com.openclassroom.application.Dtos.CommentaryDto;
 import com.openclassroom.application.Dtos.PostDto;
 import com.openclassroom.application.entities.Commentary;
 import com.openclassroom.application.entities.Post;
-import com.openclassroom.application.implementation.CommentaryServiceImpl;
-import com.openclassroom.application.implementation.PostServiceImpl;
+import com.openclassroom.application.implementations.CommentaryServiceImpl;
+import com.openclassroom.application.implementations.PostServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,12 +31,21 @@ public class PostController {
 
   private final CommentaryServiceImpl commentaryServiceImpl;
 
+  /**
+   *
+   * @return all articles concerning the user's subscriptions
+   */
   @GetMapping
   public ResponseEntity<?> findAllPosts() {
     List<PostDto> postDtos = postServiceImpl.findAllSubscribePostOfOneUser();
     return ResponseEntity.ok().body(postDtos);
   }
 
+  /**
+   *
+   * @param postId
+   * @return a specific post retrieve by his id
+   */
   @GetMapping("{id}")
   public ResponseEntity<?> findOnePost(@PathVariable(name = "id") Long postId) {
     PostDto postDto = postServiceImpl.findOnePost(postId);
@@ -46,6 +55,11 @@ public class PostController {
     return ResponseEntity.ok().body(postDto);
   }
 
+  /**
+   *
+   * @param postDto
+   * @return allow to save a new post in database
+   */
   @PostMapping
   public ResponseEntity<?> createPost(@RequestBody PostDto postDto) {
     Post post = postServiceImpl.createPost(postDto);
@@ -54,6 +68,13 @@ public class PostController {
     }
     return ResponseEntity.ok().body(new HashMap<>());
   }
+
+  /**
+   *
+   * @param commentaryDto
+   * @param postId
+   * @return allow to save in database a commentary link to a specific post
+   */
 
   @PostMapping("{id}/commentaries")
   public ResponseEntity<?> createCommentary(@RequestBody CommentaryDto commentaryDto,

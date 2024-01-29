@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.openclassroom.application.Dtos.UserDto;
-import com.openclassroom.application.implementation.AuthenticationServiceImpl;
+import com.openclassroom.application.implementations.AuthenticationServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,10 +19,21 @@ public class AuthenticationController {
 
     private final AuthenticationServiceImpl authenticationServiceImpl;
 
+    /**
+     *
+     * @param userDto
+     * @return JWT token if the registration is successful
+     */
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserDto userDto) {
         return authenticationServiceImpl.register(userDto);
     }
+
+    /**
+     *
+     * @param userDto
+     * @return JWT token if the logged is successful
+     */
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDto userDto) {
@@ -33,7 +44,5 @@ public class AuthenticationController {
     public String test() {
         return "ok";
     }
-
-    // getSubscriptions -> List Topics
-
+    
 }

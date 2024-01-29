@@ -1,4 +1,4 @@
-package com.openclassroom.application.implementation;
+package com.openclassroom.application.implementations;
 
 import java.util.List;
 import java.util.stream.Collectors;
