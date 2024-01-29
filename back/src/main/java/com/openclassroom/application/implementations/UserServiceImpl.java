@@ -1,4 +1,4 @@
-package com.openclassroom.application.implementation;
+package com.openclassroom.application.implementations;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import com.openclassroom.application.mappers.UserMapper;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -58,7 +57,6 @@ public class UserServiceImpl implements UserService {
   @Override
   public void removeUser() {
     User user = retrieveUserByContext();
-    // To complete by remove the validatiof of the token
     userRepository.delete(user);
   }
 

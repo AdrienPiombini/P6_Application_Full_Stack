@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.openclassroom.application.implementation.JwtService;
+import com.openclassroom.application.implementations.JwtService;
 
 import java.io.IOException;
 

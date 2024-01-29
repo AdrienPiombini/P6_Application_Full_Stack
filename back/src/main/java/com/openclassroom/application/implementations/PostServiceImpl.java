@@ -1,4 +1,4 @@
-package com.openclassroom.application.implementation;
+package com.openclassroom.application.implementations;
 
 import java.util.Date;
 import java.util.List;
@@ -29,7 +29,6 @@ public class PostServiceImpl implements PostService {
 
   @Override
   public Post createPost(PostDto postDto) {
-    // TO update with response entity and test of not nul data
     Post post = postMapper.fromPostDto(postDto);
     User user = userService.retrieveUserByContext();
     Topic topic = new Topic(postDto.getTopic());

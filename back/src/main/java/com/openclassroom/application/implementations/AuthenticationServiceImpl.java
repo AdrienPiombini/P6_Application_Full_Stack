@@ -1,4 +1,4 @@
-package com.openclassroom.application.implementation;
+package com.openclassroom.application.implementations;
 
 import java.util.HashMap;
 import java.util.Map;

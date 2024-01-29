@@ -1,10 +1,7 @@
-package com.openclassroom.application.implementation;
+package com.openclassroom.application.implementations;
 
 import java.util.Date;
 
-import javax.xml.stream.events.Comment;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.openclassroom.application.Dtos.CommentaryDto;
@@ -30,6 +27,7 @@ public class CommentaryServiceImpl implements CommentaryService {
   private final UserServiceImpl userServiceImpl;
   private final PostMapper postMapper;
   private final CommentaryMapper commentaryMapper;
+
 
   @Override
   public Commentary createCommentary(CommentaryDto commentaryDto, Long postId) {

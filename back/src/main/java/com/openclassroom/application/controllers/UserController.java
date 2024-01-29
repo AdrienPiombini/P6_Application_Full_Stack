@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.openclassroom.application.Dtos.TopicDto;
 import com.openclassroom.application.Dtos.UserDto;
 import com.openclassroom.application.entities.User;
-import com.openclassroom.application.implementation.UserServiceImpl;
+import com.openclassroom.application.implementations.UserServiceImpl;
 
 import lombok.AllArgsConstructor;
 
@@ -26,12 +26,20 @@ public class UserController {
 
   private final UserServiceImpl userServiceImpl;
 
+  /**
+   *
+   * @return  userDTO which is logged with spring security context
+   */
   @GetMapping
   public ResponseEntity<?> getProfile(){
     UserDto userDto = userServiceImpl.getProfile();
     return ResponseEntity.ok().body(userDto);
   }
 
+  /**
+   *
+   * @return all topics which has been subscribed by the user
+   */
   @GetMapping("/topics")
   public ResponseEntity<?> getAllSubscription() {
     List<TopicDto> topicDtos = userServiceImpl.getAllTopicsSubscribeAt();
@@ -44,6 +52,11 @@ public class UserController {
     return ResponseEntity.ok().build();
   }
 
+  /**
+   *
+   * @param userDto
+   * @return http status code 200
+   */
   @PutMapping
   public ResponseEntity<?> updateUser(@RequestBody UserDto userDto) {
     User user = userServiceImpl.updateUser(userDto);
