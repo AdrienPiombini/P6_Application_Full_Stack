@@ -9,11 +9,11 @@
             class="btn bi-arrow-left"
             aria-label="Close"
           ></button>
-          <h5 class="card-title">Title : {{ post.title }}</h5>
+          <h5 class="card-title">Titre : {{ post.title }}</h5>
 
           <p class="card-text">
-            date : {{ post.created_at | date }} thèmes : {{ post.topic }} auteur
-            : {{ post.user }}
+            date : {{ post.created_at | date : "dd/MM/yyyy HH:mm" }} thèmes :
+            {{ post.topic }} auteur : {{ post.user }}
           </p>
           <p class="card-text">
             {{ post.content }}

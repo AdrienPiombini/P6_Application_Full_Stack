@@ -11,9 +11,10 @@
     <div class="col" *ngFor="let post of posts">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Title : {{ post.title }}</h5>
+          <h5 class="card-title">Titre : {{ post.title }}</h5>
           <p class="card-text">
-            date : {{ post.created_at | date }} autauteur : {{ post.user }}
+            date : {{ post.created_at | date : "dd/MM/yyyy HH:mm" }} auteur :
+            {{ post.user }}
           </p>
           <p class="card-text">
             {{ post.content }}
