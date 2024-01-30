@@ -18,5 +18,5 @@ Use MYSQL on port 3306. By default login for bdd is `root` `root`.
 
 [BACK] 
 - Make sure you have java and maven install before start
-- Run mvn install for dependancies
-- Run the Application file. Make sure you have port 3001 available
+- Run `mvn install` for dependancies
+- Run the `Application file`. Make sure you have port 3001 available
